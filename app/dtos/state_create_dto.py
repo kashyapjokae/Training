@@ -1,5 +1,5 @@
 from pydantic import BaseModel
 
-class state_request(BaseModel):
+class post_man_dto(BaseModel):
     payal:str
     madhu:str
