@@ -8,3 +8,4 @@ python-dotenv==1.2.1
 SQLAlchemy==2.0.46
 uvicorn==0.40.0
 pydantic[email]==2.12.5
+psycopg2
