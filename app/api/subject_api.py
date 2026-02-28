@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import select 
 from app.core.database import get_db
 from app.dtos.subject_create_dto import SubjectCreateDTO
 from app.Entities.subject_model import Subject
@@ -21,5 +22,14 @@ async def create_subject(
 
     return {
         "message": "Subject created successfully"
-        
+
     }  
+
+@router.get("/Get-Subjects")
+async def get_subjects(
+    db: AsyncSession = Depends(get_db)
+):
+    result = await db.execute(select(Subject))
+    subjects = result.scalars() .all()
+    return subjects 
+        

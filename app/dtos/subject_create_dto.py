@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-class subject_dto(BaseModel):  
+class SubjectCreateDTO(BaseModel):  
     code:str
     name:str 
     
