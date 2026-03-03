@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.database import get_db
 from app.dtos.state_create_dto import post_man_dto
-from app.Entities.state_model import mummy_master
+from app.entities.state_model import mummy_master
 router = APIRouter(prefix="/states", tags=["State Master"])
 
 @router.post("/Create-State")

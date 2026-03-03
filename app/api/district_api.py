@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.database import get_db
 from app.dtos.district_create_dto import district_dto
-from app.Entities.district_model import District_model
+from app.entities.district_model import District_model
 router = APIRouter(prefix="/district", tags=["District Master"])
 
 @router.post("/Create-District")
