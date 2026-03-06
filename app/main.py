@@ -5,6 +5,12 @@ from app.api.department_api import router as department_api
 from app.api.fastfood_api import router as fastfood_api
 from app.api.subject_api import router as subject_api 
 from app.api.student_api import router as student_api
+
+from app.api.actor_api import router as actor_router
+from app.api.movie_api import router as movie_router
+from app.api.award_api import router as award_router
+
+
 from app.core.base import Base
 from app.core.database import engine
 
@@ -16,6 +22,9 @@ app.include_router(department_api)
 app.include_router(fastfood_api)
 app.include_router(subject_api) 
 app.include_router(student_api)
+app.include_router(actor_router)
+app.include_router(movie_router)
+app.include_router(award_router) 
 
 @app.on_event("startup")
 async def create_tables():
