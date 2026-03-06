@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends , HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 
@@ -28,4 +28,22 @@ async def get_actors(db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(Actor))
     actors = result.scalars().all()
 
-    return actors
+    return actors  
+
+
+@router.put("/{actor_id}")
+async def update_actor(actor_id: int, actor: ActorUpdateDTO, db: AsyncSession = Depends(get_db)):
+
+    result = await db.execute(select(Actor).where(Actor.id == actor_id))
+    db_actor = result.scalar_one_or_none()
+
+    if db_actor is None:
+        raise HTTPException(status_code=404, detail="Actor not found")
+
+    if actor.name is not None:
+        db_actor.name = actor.name
+
+    await db.commit()
+    await db.refresh(db_actor)
+
+    return db_actor
