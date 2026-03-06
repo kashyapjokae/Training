@@ -8,6 +8,13 @@ from app.Entities.state_model import mummy_master
 from app.Entities.district_model import District_model
 from app.Entities.food_model import FastFood_model
 from app.Entities.student import Student
+from app.Entities.actor import Actor
+from app.Entities.movie import Movie
+from app.Entities.award import Award
+
+
+
+
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config

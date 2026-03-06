@@ -7,6 +7,10 @@ from app.api.student_api import router as student_api
 from app.Entities.student import Student as Student
 from app.core.base import Base
 from app.core.database import engine
+from app.api.actor_api import router as actor_api
+from app.api.award_api import router as award_api
+from app.api.movie_api import router as movie_api
+
 from contextlib import asynccontextmanager
 @asynccontextmanager
 async def lifespan(app:FastAPI):
@@ -21,3 +25,7 @@ app.include_router(district_api)
 app.include_router(department_api)
 app.include_router(fastfood_api)
 app.include_router(student_api)
+app.include_router(actor_api)
+app.include_router(movie_api)
+app.include_router(award_api)
+app.include_router(actor_api)

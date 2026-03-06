@@ -8,10 +8,9 @@ from sqlalchemy import select
 from fastapi import UploadFile, File, Form
 import shutil
 import os
-
-
-
 router = APIRouter(prefix="/Student", tags=["Student"])
+
+
 @router.post("/students", response_model=StudentResponse)
 async def create_student(
     first_name: str = Form(...),
