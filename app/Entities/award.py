@@ -1,9 +1,12 @@
-from sqlalchemy import Column,Integer,String,ForeignKey
+from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy.orm import relationship
 from app.core.base import Base
 
 class Award(Base):
-    __tablename__="awards" 
-    id=Column(Integer,primary_key=True,index=True)
-    award_name=Column(String,nullable=False)
-    movie_id=Column(Integer,ForeignKey("movies.id"),nullable=False)
+    __tablename__ = "awards"
 
+    id = Column(Integer, primary_key=True, index=True)
+    award_name = Column(String, nullable=False)
+    movie_id = Column(Integer, ForeignKey("movies.id"), nullable=False)
+
+    movie = relationship("Movie", back_populates="awards")

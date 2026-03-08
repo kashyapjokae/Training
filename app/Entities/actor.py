@@ -1,9 +1,11 @@
-from sqlalchemy import Column,String,Integer
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import relationship
 from app.core.base import Base
 
 class Actor(Base):
-    __tablename__="actors"
+    __tablename__ = "actors"
 
-    id = Column(Integer,primary_key=True,index=True)
-    name=Column(String,nullable=False)
-   
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, nullable=False)
+
+    movies = relationship("Movie", back_populates="actor")
